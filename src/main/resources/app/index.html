@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title>Mandelbrot</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="app/styles/main.css">
+  <link rel="stylesheet" href="app/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="app/styles/custom.css">
+
+  <link rel="shortcut icon" type="image/x-icon" href="app/favicon.ico">
+
+</head>
+<body ng-app="mandelbrotApp">
+<!--[if lt IE 9]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="container">
+  <div ng-view="" class="heighter"></div>
+</div>
+
+
+<script src="app/bower_components/jquery/dist/jquery.js"></script>
+<script src="app/bower_components/angular/angular.js"></script>
+<script src="app/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="app/bower_components/angular-animate/angular-animate.js"></script>
+<script src="app/bower_components/angular-resource/angular-resource.js"></script>
+<script src="app/bower_components/angular-route/angular-route.js"></script>
+<script src="app/bower_components/sockjs-client/dist/sockjs.js"></script>
+<script src="app/bower_components/vertxbus.js/index.js"></script>
+
+<script src="app/scripts/app.js"></script>
+<script src="app/scripts/controllers/front.js"></script>
+<script src="app/scripts/services/mandelbrotService.js"></script>
+</body>
+</html>
