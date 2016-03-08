@@ -4,12 +4,29 @@
     <!--</div>-->
 
 <br />
-<br />
-
-   image: {{part.status}}
-
+    <form name="myForm" class="list-inline">
+        <label class="list-inline">
+            xmove: <input type="number" name="xmove" ng-model="configuration.xmove">
+        </label>
+        <label class="list-inline">
+            ymove: <input type="number" name="ymove" ng-model="configuration.ymove">
+        </label>
+        <label class="list-inline">
+            zoom: <input type="number" name="zoom" ng-model="configuration.zoom">
+        </label>
+        {{mousex}}:{{mousey}} - {{rectx}}:{{recty}}
+    </form>
     <br />
-    <br />
-    <img alt="mandelbrot part" width="400" height="400" data-ng-src="data:image/jpeg;base64,{{getImage()}}" />
+
+
+    <div id="mandelgrid">
+    <div ng-repeat="y in getGridRange(configuration.height)" class="list-inline">
+        <div ng-repeat="x in getGridRange(configuration.width)" style="display:inline-block">
+            <!--[{{x}},{{y}}]-->
+            <img alt="mandelbrot part"  data-ng-src="data:image/jpeg;base64,{{images[y][x]}}" />
+        </div>
+    </div>
+    </div>
+
 
 </div>

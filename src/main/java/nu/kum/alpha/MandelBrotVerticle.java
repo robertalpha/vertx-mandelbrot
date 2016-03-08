@@ -36,7 +36,7 @@ public class MandelBrotVerticle extends AbstractVerticle {
         long startTime = System.nanoTime();
 
 
-        int width = 1920, height = 1080, max = 80000;
+        int width = 1920, height = 1080, max = 1000;
         double zoom = 400d;
         double xmove = width / 2;
         double ymove = height / 2;

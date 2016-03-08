@@ -24,8 +24,9 @@ public class MainVerticle extends AbstractVerticle {
 
         vertx.createHttpServer(new HttpServerOptions().setPort(PORT)).requestHandler(getRouter(vertx)::accept).listen();
 
-        // Start at least one single mandelbrot verticle:
-        vertx.deployVerticle(new MandelBrotVerticle(), new DeploymentOptions().setMultiThreaded(true).setWorker(true), h -> {
+        // Start at least one single mandelbrot verticle... or 8:
+        vertx.deployVerticle("nu.kum.alpha.MandelBrotVerticle", new DeploymentOptions().setMultiThreaded(true).setWorker(true)
+                .setInstances(8), h -> {
             if (h.failed()) {
                 Util.debug("MandelBrotVerticle failed to start");
             }
