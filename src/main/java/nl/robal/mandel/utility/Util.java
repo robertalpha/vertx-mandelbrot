@@ -1,10 +1,7 @@
-package nu.kum.alpha.utility;
+package nl.robal.mandel.utility;
 
 import java.util.Date;
 
-/**
- * Robert on 13-6-2015.
- */
 public class Util {
 
     public static void debug(String d) {

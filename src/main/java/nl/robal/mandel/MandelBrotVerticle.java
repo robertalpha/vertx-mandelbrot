@@ -1,9 +1,9 @@
-package nu.kum.alpha;
+package nl.robal.mandel;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
-import nu.kum.alpha.utility.Util;
+import nl.robal.mandel.utility.Util;
 import org.apache.xmlbeans.impl.util.Base64;
 
 import javax.imageio.ImageIO;
@@ -84,7 +84,6 @@ public class MandelBrotVerticle extends AbstractVerticle {
         long durationInMillis = (System.nanoTime() - startTime) / 1000000;
         String statusinfo = "took " + durationInMillis + " ms to compute on " + Thread.currentThread().getName();
         Util.debug(statusinfo);
-//        byte[] encoded = Base64.encode(bytes);
         return new JsonObject().put("image64", encodedImage).put("status", statusinfo);
 
     }

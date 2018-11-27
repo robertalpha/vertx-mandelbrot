@@ -1,14 +1,13 @@
-package nu.kum.alpha;
+package nl.robal.mandel;
 
 import io.vertx.core.*;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServerOptions;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.handler.BodyHandler;
-import io.vertx.ext.web.handler.CookieHandler;
-import nu.kum.alpha.utility.Util;
+import nl.robal.mandel.utility.Util;
 
-import static nu.kum.alpha.utility.Util.debug;
+import static nl.robal.mandel.utility.Util.debug;
 
 public class MainVerticle extends AbstractVerticle {
 

@@ -1,4 +1,4 @@
-package nu.kum.alpha;
+package nl.robal.mandel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
