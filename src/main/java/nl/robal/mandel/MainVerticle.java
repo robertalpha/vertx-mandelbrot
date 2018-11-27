@@ -13,9 +13,11 @@ import static nu.kum.alpha.utility.Util.debug;
 public class MainVerticle extends AbstractVerticle {
 
     private static final int PORT = 8050;
+    private static final String BASE_PATH = "app/";
+    private static final String WELCOME_PAGE = BASE_PATH + "index.html";
 
     @Override
-    public void start(Future startFuture) throws Exception {
+    public void start(Future startFuture) {
 
         VertxOptions options = new VertxOptions();
         options.setMaxWorkerExecuteTime(VertxOptions.DEFAULT_MAX_WORKER_EXECUTE_TIME * 12);
@@ -25,20 +27,24 @@ public class MainVerticle extends AbstractVerticle {
         vertx.createHttpServer(new HttpServerOptions().setPort(PORT)).requestHandler(getRouter(vertx)::accept).listen();
 
         // Start at least one single mandelbrot verticle... or 8:
-        vertx.deployVerticle("nu.kum.alpha.MandelBrotVerticle", new DeploymentOptions().setMultiThreaded(true).setWorker(true)
-                .setInstances(8), h -> {
-            if (h.failed()) {
-                Util.debug("MandelBrotVerticle failed to start");
-            }
-        });
+        vertx.deployVerticle("nl.robal.mandel.MandelBrotVerticle",
+                new DeploymentOptions().
+                        setMultiThreaded(true)
+                        .setWorker(true)
+                        .setInstances(8)
+                , h -> {
+                    if (h.failed()) {
+                        Util.debug("MandelBrotVerticle failed to start");
+                    }
+                    if (h.succeeded()) {
+                        Util.debug("Application started, running on: http://localhost:" + PORT);
+                    }
+                });
 
         startFuture.complete();
     }
 
-    public static io.vertx.ext.web.Router getRouter(Vertx vertx) {
-        String BASE_PATH = "app/";
-        String WELCOME_PAGE = BASE_PATH + "index.html";
-
+    private static io.vertx.ext.web.Router getRouter(Vertx vertx) {
         io.vertx.ext.web.Router router = io.vertx.ext.web.Router.router(vertx);
 
         router.route("/api/*").handler(BodyHandler.create().setMergeFormAttributes(false));
